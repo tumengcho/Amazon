@@ -9,7 +9,6 @@ body {
 .slider {
   margin-bottom: 30px;
   position: relative;
-  background-color: #f44336;
 }
 .slider .owl-item.active.center .slider-card {
   transform: scale(1.15);
@@ -22,7 +21,7 @@ body {
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to bottom,
-    #ff5e62,
+    #ec1010,
     #ff9966
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
@@ -78,9 +77,21 @@ body {
   outline: none;
 }
 .owl-dots .owl-dot.active {
-  background: #f44336 !important;
+  background: white !important;
 }
 
 section {
-  background-color: #f44336;
+  margin-top: 90px;
+  background-image: url('../Images/fond2.jpg');
+  background-position: center;
+  background-size: 100%;
+}
+
+.menu {
+  background-image: url('../Images/menu1.jpg');
+  background-position: center;
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-color: #fff9ef;
+  color: #cccccc00;
 }

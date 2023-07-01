@@ -9,8 +9,8 @@ $(document).ready(function () {
     autoplayHoverPause: true,
     center: true,
     navText: [
-      "<i class='fa fa-angle-left'></i>",
-      "<i class='fa fa-angle-right'></i>",
+      "<i class='fa fa-angle-left' style='background-color:white;'></i>",
+      "<i class='fa fa-angle-right' style='background-color:white;'></i>",
     ],
     responsive: {
       0: {
