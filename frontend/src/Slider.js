@@ -1,82 +1,60 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import Container from 'react-bootstrap/Container';
 import './css/styles.css';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import 'owl.carousel/dist/owl.carousel.min.js';
-import data from './data.js';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import OwlCarousel from 'react-owl-carousel';
+import logger from 'use-reducer-logger';
+import MessageBox from './components/MessageBox';
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS':
+      return { ...state, burgers: action.payload, loading: false };
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 const Slider = () => {
   /* Produit */
-  const owlCarouselRef = useRef(null);
-  const [burger, setBurgers] = useState([]);
-
+  const [{ loading, error, burgers }, dispatch] = useReducer(logger(reducer), {
+    burgers: [],
+    loading: true,
+    error: '',
+  });
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('/api/burgers');
-      setBurgers(result.data);
+      dispatch({ type: 'FETCH_REQUEST' });
+      try {
+        const result = await axios.get('/api/burgers');
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAIL', payload: err.message });
+      }
     };
 
     fetchData();
   }, []);
-  if (burger.length >= 4) {
-    if (owlCarouselRef.current) {
-      window.$(owlCarouselRef.current).owlCarousel({
-        items: 3,
-        loop: true,
-        nav: true,
-        dots: false,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 6000,
-        autoplayHoverPause: true,
-        center: true,
-        navText: [
-          "<i class='fa fa-angle-left' style='background-color:white;'></i>",
-          "<i class='fa fa-angle-right' style='background-color:white;'></i>",
-        ],
-        responsive: {
-          0: {
-            items: 1,
-          },
-          600: {
-            items: 1,
-          },
-          1000: {
-            items: 3,
-          },
-        },
-      });
-    } else {
-      console.log('oui');
-    }
-  }
 
   return (
     <section id="slider" className="pt-5">
-      {/* <Container>
-        
-        
-          <div ref={owlCarouselRef} className="owl-carousel">
-            {burger.map((product) => (
-              
-            ))}
-          </div>
-        </div>
-      </Container> */}
       <Container>
         <h1 className="text-center py-3 menu">
           <b>OUR MENU</b>
         </h1>
         <div className="slider pt-5">
           <OwlCarousel
-            items={3}
             className="owl-carousel"
             loop
             nav
+            dots={false}
             margin={10}
             center
             autoPlay
@@ -92,33 +70,58 @@ const Slider = () => {
               1000: { items: 3 },
             }}
           >
-            {burger.map((product) => (
-              <div key={product.slug} class="slider-card text-center pt-5">
-                <img src={product.image} alt="" />
-                <h2
-                  class="text-center card-title py-1"
-                  style={{ color: '#fffb0b' }}
-                >
-                  {product.name}
-                </h2>
-                <div class="info">
-                  <div class="card-body text-center py-2">
-                    <p class="text-center card-text">{product.description}</p>
+            {loading ? (
+              <div className="slider-card">
+                <div className=".slider-card">
+                  <img
+                    className="loading"
+                    src={'./Images/hamb2-removebg-preview.png'}
+                    alt=""
+                  />
+                  <h2
+                    class="text-center card-title py-1"
+                    style={{ color: '#fffb0b' }}
+                  >
+                    Loading...
+                  </h2>
+                  <div class="info">
+                    <div class="card-body text-center py-2">
+                      <p class="text-center card-text"></p>
+                    </div>
                   </div>
                 </div>
-                <h1
-                  class="text-center pb-3"
-                  style={{ color: '#ce2a2a', fontFamily: 'fantasy' }}
-                >
-                  {product.price}$
-                </h1>
-                <button class="info mb-3">
-                  <Link className="lien" to={`/product/${product.slug}`}>
-                    BUY NOW
-                  </Link>
-                </button>
               </div>
-            ))}
+            ) : error ? (
+              <MessageBox variant="danger">{error}</MessageBox>
+            ) : (
+              burgers.map((product) => (
+                <div key={product.slug} class="slider-card text-center pt-5">
+                  <img src={product.image} alt="" />
+                  <h2
+                    class="text-center card-title py-1"
+                    style={{ color: '#fffb0b' }}
+                  >
+                    {product.name}
+                  </h2>
+                  <div class="info">
+                    <div class="card-body text-center py-2">
+                      <p class="text-center card-text">{product.description}</p>
+                    </div>
+                  </div>
+                  <h1
+                    class="text-center pb-3"
+                    style={{ color: '#ce2a2a', fontFamily: 'fantasy' }}
+                  >
+                    {product.price}$
+                  </h1>
+                  <button class="info mb-3">
+                    <Link className="lien" to={`/burgers/${product.slug}`}>
+                      BUY NOW
+                    </Link>
+                  </button>
+                </div>
+              ))
+            )}
           </OwlCarousel>
         </div>
       </Container>

@@ -1,22 +1,14 @@
-import { useEffect, useState } from 'react';
 import Slider from '../Slider';
-import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 function HomeScreen() {
-  const [burgers, setBurgers] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('/api/burgers');
-      setBurgers(result.data);
-    };
-    fetchData();
-  }, []);
-
   return (
     <div className="main">
-      <div className="RecVert"></div>
+      <Helmet>
+        <title>Moxom</title>
+      </Helmet>
+      ;<div className="RecVert"></div>
       <div className="RecRouge1"></div>
       <div className="RecRouge2"></div>
-
       <div className="crispy">
         <div className="lettre">
           <div className="surplus1"></div>
@@ -39,11 +31,9 @@ function HomeScreen() {
           <div className="surplus2"></div>
         </div>
       </div>
-
       <div className="Hamburger">
         <h1>HAMBURGER</h1>
       </div>
-
       <div className="Image">
         <img
           src={require('../Images/hamburger-removebg-preview.png')}
@@ -51,7 +41,6 @@ function HomeScreen() {
           alt=""
         />
       </div>
-
       <div class="Rec1">
         <div class="Rec2">
           <div class="Numéro">
@@ -72,9 +61,7 @@ function HomeScreen() {
           </div>
         </div>
       </div>
-
       <Slider />
-
       <div class="delivery">
         <div
           style={{
@@ -111,7 +98,6 @@ function HomeScreen() {
           </div>
         </div>
       </div>
-
       <div class=" avantages row text-center align-items-center">
         <div class="col-3">
           <div>

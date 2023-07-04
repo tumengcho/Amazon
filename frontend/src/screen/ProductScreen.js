@@ -1,34 +1,89 @@
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire } from '@fortawesome/free-solid-svg-icons';
+import { useContext, useEffect, useReducer } from 'react';
+import logger from 'use-reducer-logger';
+import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
+import MessageBox from '../components/MessageBox';
+import { getError } from '../utils';
+import { Store } from '../Store';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true };
+    case 'FETCH_SUCCESS':
+      return { ...state, burger: action.payload, loading: false };
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 function ProductScreen() {
   const params = useParams();
   const { slug } = params;
-  return (
+
+  const [{ loading, error, burger }, dispatch] = useReducer(logger(reducer), {
+    burger: [],
+    loading: true,
+    error: '',
+  });
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: 'FETCH_REQUEST' });
+      try {
+        const result = await axios.get(`/api/burgers/slug/${slug}`);
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+      } catch (err) {
+        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
+      }
+    };
+
+    fetchData();
+  }, [slug]);
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const addToCartHandler = () => {
+    ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...burger, quantity: 1 } });
+  };
+
+  return loading ? (
+    <div class="produit text-center">
+      <div class="intProduit container">
+        <h1>Loading...</h1>
+      </div>
+    </div>
+  ) : error ? (
+    <div class="produit text-center">
+      <div class="intProduit container">
+        <MessageBox variant={'danger'}>{error}</MessageBox>
+      </div>
+    </div>
+  ) : (
     <div class="produit text-start">
       <div class="intProduit container">
         <div class="row rangé">
           <div class="col-6">
-            <img
-              class="imgProd"
-              src="../Images/hamb2-removebg-preview.png"
-              alt=""
-            />
+            <img class="imgProd" src={burger.image} alt="" />
           </div>
           <div
             class="col-6"
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.200)' }}
           >
             <div class="col">
-              <h1 class="product-title">{slug}</h1>
+              <Helmet>
+                <title>{burger.name}</title>
+              </Helmet>
+              <h1 class="product-title">{burger.name}</h1>
             </div>
             <div class="col">
               <hr />
             </div>
             <div class="col my-4">
               <h3 class="product-price">
-                19.99$
+                {burger.price}$
                 <span class="product-logo rounded-pill">
                   <FontAwesomeIcon
                     className="product-logo"
@@ -49,12 +104,7 @@ function ProductScreen() {
                 <label for="tab1" class="tabs__label">
                   <span style={{ fontSize: '1.1em' }}>DESCRIPTION</span>
                 </label>
-                <div class="tabs__content">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Beatae ipsa labore eum ea mollitia repellat est perferendis
-                  quo quas magnam nostrum corporis eos magni aperiam dolor, quam
-                  quidem eveniet ut.
-                </div>
+                <div class="tabs__content">{burger.description}</div>
                 <input
                   type="radio"
                   class="tabs__radio"
@@ -85,6 +135,7 @@ function ProductScreen() {
               <button
                 class="col-6 rounded-pill mx-5 mt-5 product-buy"
                 style={{ width: '30%', height: '75px' }}
+                onClick={addToCartHandler}
               >
                 ORDER ONLINE
               </button>

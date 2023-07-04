@@ -1,12 +1,17 @@
 import './css/style.css';
 import './css/styles.css';
+import Badge from 'react-bootstrap/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screen/HomeScreen';
 import ProductScreen from './screen/ProductScreen';
+import { useContext } from 'react';
+import { Store } from './Store';
 function App() {
+  const { state } = useContext(Store);
+  const { cart } = state;
   return (
     <BrowserRouter>
       <nav className="navi">
@@ -36,16 +41,27 @@ function App() {
             </li>
             <li>
               <button className="b1">TAKE ORDER</button>
-              <button className="b2">
-                <FontAwesomeIcon icon={faBagShopping}></FontAwesomeIcon>
-              </button>
+              <Link to="/cart">
+                <button className="b2 position-relative">
+                  <FontAwesomeIcon icon={faBagShopping}></FontAwesomeIcon>
+                  {cart.cartItems.length > 0 && (
+                    <Badge
+                      className="position-absolute top-0 end-0"
+                      pill
+                      bg="danger"
+                    >
+                      {cart.cartItems.length}
+                    </Badge>
+                  )}
+                </button>
+              </Link>
             </li>
           </ul>
         </div>
       </nav>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
-        <Route path="/product/:slug" element={<ProductScreen />} />
+        <Route path="/burgers/:slug" element={<ProductScreen />} />
       </Routes>
     </BrowserRouter>
   );

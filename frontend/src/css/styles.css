@@ -95,3 +95,7 @@ section {
   background-color: #fff9ef;
   color: #cccccc00;
 }
+
+.loading {
+  visibility: hidden;
+}
