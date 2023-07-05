@@ -8,8 +8,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import MessageBox from '../components/MessageBox';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import Container from 'react-bootstrap/esm/Container';
 export default function CartScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -67,7 +65,7 @@ export default function CartScreen() {
                         }
                         disabled={item.quantity === 1}
                       >
-                        <FontAwesomeIcon icon={faMinusCircle}></FontAwesomeIcon>
+                        <i class="fa-solid fa-circle-minus"></i>
                       </Button>
                       <span>{item.quantity}</span>
                       <Button
@@ -77,7 +75,7 @@ export default function CartScreen() {
                         }
                         disabled={item.quantity === 10}
                       >
-                        <FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon>
+                        <i class="fa-solid fa-circle-plus"></i>
                       </Button>
                     </Col>
                     <Col md={3}>{item.price}$</Col>

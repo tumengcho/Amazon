@@ -1,8 +1,6 @@
 import './css/style.css';
 import './css/styles.css';
 import Badge from 'react-bootstrap/Badge';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screen/HomeScreen';
@@ -45,7 +43,7 @@ function App() {
               <button className="b1">TAKE ORDER</button>
               <Link to="/cart">
                 <button className="b2 position-relative">
-                  <FontAwesomeIcon icon={faBagShopping}></FontAwesomeIcon>
+                  <i class="fa-solid fa-bag-shopping"></i>
                   {cart.cartItems.length > 0 && (
                     <Badge
                       className="position-absolute top-0 end-0"

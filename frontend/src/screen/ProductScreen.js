@@ -1,6 +1,4 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFire } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect, useReducer } from 'react';
 import logger from 'use-reducer-logger';
 import axios from 'axios';
@@ -91,10 +89,7 @@ function ProductScreen() {
               <h3 class="product-price">
                 {burger.price}$
                 <span class="product-logo rounded-pill">
-                  <FontAwesomeIcon
-                    className="product-logo"
-                    icon={faFire}
-                  ></FontAwesomeIcon>
+                  <i class="fa-solid fa-fire product-logo"></i>
                 </span>
               </h3>
             </div>
