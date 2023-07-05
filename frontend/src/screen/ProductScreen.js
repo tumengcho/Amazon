@@ -45,8 +45,12 @@ function ProductScreen() {
     fetchData();
   }, [slug]);
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const addToCartHandler = () => {
-    ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...burger, quantity: 1 } });
+  const { cart } = state;
+  const addToCartHandler = async () => {
+    const existItems = cart.cartItems.find((x) => x._id === burger._id);
+    const quantity = existItems ? existItems.quantity + 1 : 1;
+
+    ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...burger, quantity } });
   };
 
   return loading ? (
