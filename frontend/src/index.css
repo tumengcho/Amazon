@@ -22,3 +22,7 @@ code {
 .img-thumbnail {
   height: 80px;
 }
+
+.small-container {
+  margin-top: 10%;
+}
