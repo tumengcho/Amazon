@@ -18,3 +18,7 @@ code {
   border-radius: 20%;
   background-color: #adeb13;
 }
+
+.img-thumbnail {
+  height: 80px;
+}

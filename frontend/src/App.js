@@ -9,6 +9,7 @@ import HomeScreen from './screen/HomeScreen';
 import ProductScreen from './screen/ProductScreen';
 import { useContext } from 'react';
 import { Store } from './Store';
+import CartScreen from './screen/CartScreen';
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
@@ -60,6 +61,7 @@ function App() {
         </div>
       </nav>
       <Routes>
+        <Route path="/cart" element={<CartScreen />} />
         <Route path="/" element={<HomeScreen />} />
         <Route path="/burgers/:slug" element={<ProductScreen />} />
       </Routes>

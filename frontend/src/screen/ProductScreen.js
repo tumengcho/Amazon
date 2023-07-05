@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect, useReducer } from 'react';
@@ -25,6 +25,7 @@ const reducer = (state, action) => {
 function ProductScreen() {
   const params = useParams();
   const { slug } = params;
+  const navigate = useNavigate();
 
   const [{ loading, error, burger }, dispatch] = useReducer(logger(reducer), {
     burger: [],
@@ -51,6 +52,7 @@ function ProductScreen() {
     const quantity = existItems ? existItems.quantity + 1 : 1;
 
     ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...burger, quantity } });
+    navigate('/cart');
   };
 
   return loading ? (
