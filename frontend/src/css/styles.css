@@ -99,3 +99,15 @@ section {
 .loading {
   visibility: hidden;
 }
+
+@media screen and (max-width: 768px) {
+  .owl-item.active.center .slider-card {
+    transform: scale(0.5);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .owl-item.active.center .slider-card {
+    transform: scale(1);
+  }
+}

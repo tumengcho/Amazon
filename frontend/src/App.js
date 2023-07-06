@@ -22,6 +22,43 @@ function App() {
           </span>
           <span className="rbraquet"></span>
         </Link>
+        <div className="items-mobile">
+          <a
+            class="btn btn-primary"
+            data-bs-toggle="offcanvas"
+            href="#offcanvasExample"
+            role="button"
+            aria-controls="offcanvasExample"
+          >
+            <h1>
+              <i class="fa-solid fa-bars"></i>
+            </h1>
+          </a>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                TEST
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>
+                Some text as placeholder. In real life you can have the elements
+                you have chosen. Like, text, images, lists, etc.
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="items">
           <ul>
             <li>
@@ -56,7 +93,8 @@ function App() {
                 </button>
               </Link>
             </li>
-          </ul>
+          </ul>{' '}
+          *
         </div>
       </nav>
       <Routes>

@@ -57,6 +57,25 @@ body {
   height: 100%;
   align-items: center;
 }
+
+.items-mobile {
+  display: none;
+  text-align: right;
+  height: 100%;
+  align-items: center;
+  padding-right: 4%;
+}
+
+.items-mobile h1 {
+  font-size: 3em;
+  margin: 2% 0 0 0;
+}
+.items-mobile a {
+  color: black;
+  text-decoration: none;
+  background-color: #ce090900;
+  border: 0;
+}
 ul {
   height: 100%;
 }
@@ -68,8 +87,8 @@ li {
 /* Style pour le button 1 */
 .b1 {
   margin-right: -5px;
-  min-width: 10em;
-  min-height: 5em;
+  width: 10em;
+  height: 5em;
   background-color: #adeb13;
   font-family: fantasy;
   color: white;
@@ -93,6 +112,7 @@ li {
 /* Début style pour le body */
 
 .main {
+  width: 100%;
   position: relative;
   height: 900px;
   background-color: #fffb0b;
@@ -163,7 +183,7 @@ li {
 }
 /* Chacune des Lettres */
 .lettre h1 {
-  margin-top: -45%;
+  margin-top: -47%;
 
   padding: 0;
   font-size: 30dvw;
@@ -212,7 +232,7 @@ li {
 
 .Image {
   position: absolute;
-  width: 700px;
+  width: 70%;
   max-width: 500px;
   height: 400px;
   top: 45%;
@@ -221,19 +241,13 @@ li {
   background-color: #1386eb00;
 }
 
-.Rec1 {
-  height: 225px;
-  background-color: #ce2a2a;
-}
-
 .Rec2 {
-  display: grid;
   text-align: center;
-  grid-template-columns: 25% 25% 25% 25%;
-  width: 90%;
-  height: 100%;
-  margin: 0 auto 0 auto;
+  width: 100%;
+  height: 225px;
   background-color: #ec1010;
+  padding: 0 5% 0 5%;
+  margin: 0;
 }
 
 .Rec2 h1 {
@@ -241,9 +255,11 @@ li {
   font-family: fantasy;
   margin: 0;
   padding: 0;
-  margin-right: 7%;
 }
-
+.Rec2 .row {
+  margin: 0;
+  padding: 0;
+}
 .Rec2 h2 {
   font-size: 2.5em;
   margin: 0;
@@ -252,12 +268,12 @@ li {
   color: #fffb0b;
 }
 .Numéro {
-  display: grid;
-  grid-template-columns: 50% 50%;
   align-items: center;
   text-align: start;
   border: 1px solid black;
   color: #102429;
+  margin: 0;
+  padding: 0;
 }
 
 /* Delivery */
@@ -296,9 +312,14 @@ li {
 }
 
 .sDelivery {
-  font-size: 5em;
+  font-size: 2em;
   font-style: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  justify-self: center;
+}
+
+.bText {
+  font-size: 1em;
 }
 
 .bDelivery {
@@ -311,14 +332,13 @@ li {
 /* Section avantages */
 
 .avantages {
-  height: 400px;
+  height: fit-content;
   background-color: red;
 }
 
 .imgAvan {
-  max-width: 125px;
+  max-width: 30%;
   display: inline-block;
-  margin-left: 4%;
 }
 
 .textAvant {
@@ -422,4 +442,174 @@ li {
 .lien {
   color: black;
   text-decoration: none;
+}
+
+/* Media screens */
+
+@media screen and (min-width: 325px) {
+  .sDelivery {
+    font-size: 3em;
+  }
+  .bText {
+    font-size: 1.5em;
+  }
+  .Rec2 {
+    padding: 0;
+    margin: 0;
+  }
+  .Numéro {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  .Rec2 h1 {
+    font-size: 4em;
+    text-align: center;
+  }
+
+  .Rec2 h2 {
+    font-size: 1.2em;
+  }
+  .Image {
+    left: 22%;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .sDelivery {
+    font-size: 4em;
+  }
+  .Rec2 {
+    padding: 0;
+    margin: 0;
+  }
+  .Numéro {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  .Rec2 h1 {
+    font-size: 5em;
+    text-align: center;
+  }
+
+  .Rec2 h2 {
+    font-size: 1.5em;
+  }
+  .Image {
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sDelivery {
+    font-size: 4em;
+  }
+
+  .Rec2 h1 {
+    font-size: 4em;
+    text-align: end;
+  }
+
+  .Rec2 h2 {
+    font-size: 0.8em;
+    text-align: start;
+  }
+
+  .Image {
+    left: 24%;
+  }
+
+  li h1 {
+    font-size: small;
+  }
+
+  .b1 {
+    width: 6em;
+    height: 5em;
+  }
+
+  .b2 {
+    width: 3em;
+    height: 5em;
+  }
+}
+
+@media screen and (max-width: 892px) {
+  .items {
+    display: none;
+  }
+
+  .items-mobile {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .Rec2 h1 {
+    font-size: 5em;
+  }
+
+  .Rec2 h2 {
+    font-size: 1em;
+  }
+
+  .Image {
+    left: 27%;
+  }
+
+  li h1 {
+    font-size: medium;
+  }
+
+  .b1 {
+    width: 6em;
+    height: 5em;
+  }
+
+  .b2 {
+    width: 3em;
+    height: 5em;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sDelivery {
+    font-size: 5em;
+  }
+
+  .Rec2 h1 {
+    font-size: 5em;
+  }
+
+  .Rec2 h2 {
+    font-size: 1.5em;
+  }
+
+  .Image {
+    left: 35%;
+  }
+
+  li h1 {
+    font-size: medium;
+  }
+
+  .b1 {
+    width: 10em;
+    height: 5em;
+  }
+
+  .b2 {
+    width: 5em;
+    height: 5em;
+  }
+}
+
+@media screen and (min-width: 1671px) {
+  .Rec2 h1 {
+    font-size: 7em;
+  }
+
+  .Rec2 h2 {
+    font-size: 2.5em;
+  }
 }
