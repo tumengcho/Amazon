@@ -18,7 +18,7 @@ function HomeScreen() {
           <h1>R</h1>
         </div>
         <div className="lettre">
-          <h1 style={{ marginTop: '-75%' }}>I</h1>
+          <h1 className="I">I</h1>
         </div>
         <div className="lettre">
           <h1>S</h1>
@@ -47,13 +47,13 @@ function HomeScreen() {
       >
         <div class="Numéro col-3 row">
           <h1 className="col-md-6">01</h1>
-          <h2 className="col-md-6">DELIGHTFUL</h2>
+          <h2 className="col-md-6">DELICIOUS</h2>
         </div>
         <div class="Numéro col-3 row">
           <h1 className="col-md-6">02</h1>
           <h2 className="col-md-6">ONLY 12.99</h2>
         </div>
-        <div class="Numéro col-3 row">
+        <div class=" col-3 row Numéro">
           <h1 className="col-md-6">03</h1>
           <h2 className="col-md-6">CRISPY</h2>
         </div>
@@ -73,14 +73,18 @@ function HomeScreen() {
           }}
         >
           <div class="container intDeliv text-center align-items-center">
-            <div style={{ height: '40%', paddingLeft: '13%' }} class="row">
-              <h3 class="fDelivery mt-3 col-6">Free Delivery</h3>
-            </div>
+            <div
+              style={{ height: '40%', paddingLeft: '13%' }}
+              class="row"
+            ></div>
             <div style={{ height: '25%', marginBottom: '5%' }}>
               <h1 class="sDelivery">SANDWITCH DAY</h1>
             </div>
             <div style={{ height: '25%' }}>
-              <button class="bDelivery btn btn-success rounded-pill">
+              <button
+                class="bDelivery btn btn-success rounded-pill"
+                style={{ width: '30%', height: '60%' }}
+              >
                 <h3 className="bText">ORDER NOW</h3>
               </button>
             </div>
@@ -103,7 +107,7 @@ function HomeScreen() {
           <div></div>
 
           <div>
-            <p class="textAvant">
+            <p class="textAvant py-3">
               We use only the best ingredients to cook the tasty fresh food for
               you.
             </p>
@@ -119,7 +123,7 @@ function HomeScreen() {
           </div>
           <div></div>
           <div>
-            <p class="textAvant">
+            <p class="textAvant py-3">
               Everything you order at Moxom will be quickly delivered to your
               door.
             </p>
@@ -135,7 +139,7 @@ function HomeScreen() {
           </div>
           <div></div>
           <div>
-            <p class="textAvant">
+            <p class="textAvant py-3">
               Our staff consists of chefs and cooks with years of experience.
             </p>
           </div>
@@ -150,7 +154,7 @@ function HomeScreen() {
           </div>
           <div></div>
           <div>
-            <p class="textAvant">
+            <p class="textAvant py-3">
               In our menu you'll find a wide variety of dishes, desserts, and
               drinks.
             </p>

@@ -124,7 +124,7 @@ li {
 .RecVert {
   display: flex;
   width: 20%;
-  min-height: 100%;
+  height: 100%;
   background-color: #adeb13;
   margin: 0px auto 80px auto;
   z-index: -1;
@@ -136,7 +136,7 @@ li {
   top: 1.5%;
   right: 32%;
   width: 13%;
-  min-height: 73.2%;
+  height: 73.2%;
   background-color: red;
   margin-top: 90px;
   z-index: 1;
@@ -148,7 +148,7 @@ li {
   top: 1.5%;
   right: 54%;
   width: 15%;
-  min-height: 73.2%;
+  height: 73.2%;
   background-color: red;
   margin-top: 90px;
   z-index: 1;
@@ -446,9 +446,9 @@ li {
 
 /* Media screens */
 
-@media screen and (min-width: 325px) {
+@media screen and (max-width: 576px) {
   .sDelivery {
-    font-size: 3em;
+    font-size: 9dvw;
   }
   .bText {
     font-size: 1.5em;
@@ -462,6 +462,13 @@ li {
     margin: 0;
     text-align: center;
   }
+
+  .Numéro h1 {
+    margin-top: 35%;
+  }
+  .Numéro h2 {
+    margin-bottom: 35%;
+  }
   .Rec2 h1 {
     font-size: 4em;
     text-align: center;
@@ -473,12 +480,125 @@ li {
   .Image {
     left: 22%;
   }
+
+  .crispy {
+    height: 200px;
+    top: 32%;
+  }
+
+  .Hamburger {
+    top: 42%;
+  }
+
+  .RecVert {
+    width: 30%;
+    margin-bottom: 50px;
+    margin-top: 15px;
+  }
+
+  .RecRouge1 {
+    height: 65%;
+    width: 19%;
+    left: 55%;
+    top: 3%;
+  }
+
+  .main {
+    height: 600px;
+  }
+
+  .RecRouge2 {
+    height: 65%;
+    width: 19%;
+    left: 25%;
+    top: 3%;
+  }
+
+  .Moxom {
+    width: 100px;
+    margin-top: 14px;
+  }
+
+  .rbraquet {
+    height: 55px;
+  }
+
+  .lbraquet {
+    height: 55px;
+  }
+
+  .Moxom h1 {
+    font-size: large;
+  }
+
+  .Image {
+    top: 45%;
+    width: 60%;
+    height: 35%;
+  }
+
+  .lettre h1 {
+    margin: 0;
+  }
 }
 
 @media screen and (min-width: 576px) {
   .sDelivery {
-    font-size: 4em;
+    font-size: 7dvw;
   }
+
+  .fDelivery {
+    font-size: 3dvw;
+  }
+
+  .lettre h1 {
+    font-size: 39dvw;
+  }
+  .Numéro h1 {
+    margin-top: 25%;
+  }
+  .Numéro h2 {
+    margin-bottom: 25%;
+  }
+  .Image {
+    top: 43%;
+    width: 70%;
+    height: 45%;
+    left: 20%;
+  }
+
+  .RecVert {
+    width: 50%;
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+
+  .crispy {
+    top: 35%;
+    height: 200px;
+  }
+  .Hamburger {
+    top: 43%;
+  }
+
+  .RecRouge1 {
+    height: 65%;
+    width: 29%;
+    left: 59%;
+    top: 3%;
+  }
+
+  .RecRouge2 {
+    height: 65%;
+    width: 29%;
+    left: 15%;
+    top: 3%;
+  }
+
+  .lettre .I {
+    margin-top: -73%;
+  }
+
   .Rec2 {
     padding: 0;
     margin: 0;
@@ -496,13 +616,59 @@ li {
   .Rec2 h2 {
     font-size: 1.5em;
   }
-  .Image {
-  }
 }
 
 @media screen and (min-width: 768px) {
   .sDelivery {
     font-size: 4em;
+  }
+  .Numéro h1 {
+    margin-top: 0;
+  }
+  .Numéro h2 {
+    margin-bottom: 0;
+  }
+  .lettre h1 {
+    font-size: 30dvw;
+  }
+
+  .Image {
+    top: 45%;
+    width: 500px;
+    height: 400px;
+    left: 35%;
+  }
+
+  .RecVert {
+    width: 20%;
+    margin-bottom: 80px;
+    margin-top: 15px;
+  }
+
+  .crispy {
+    top: 23%;
+    height: 400px;
+  }
+  .Hamburger {
+    top: 35%;
+  }
+
+  .RecRouge2 {
+    height: 73.2%;
+    width: 15%;
+    left: 54%;
+    top: 1.5%;
+  }
+
+  .RecRouge1 {
+    height: 73.2%;
+    width: 15%;
+    left: 32%;
+    top: 1.5%;
+  }
+
+  .lettre .I {
+    margin-top: -73%;
   }
 
   .Rec2 h1 {
