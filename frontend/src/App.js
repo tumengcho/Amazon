@@ -1,6 +1,8 @@
 import './css/style.css';
 import './css/styles.css';
 import Badge from 'react-bootstrap/Badge';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { LinkContainer } from 'react-router-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screen/HomeScreen';
@@ -10,8 +12,13 @@ import { Store } from './Store';
 import CartScreen from './screen/CartScreen';
 import SignInScreen from './screen/SignInScreen';
 function App() {
-  const { state } = useContext(Store);
-  const { cart } = state;
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart, userInfo } = state;
+
+  const signoutHandler = () => {
+    ctxDispatch({ type: 'USER_SIGNOUT' });
+    localStorage.removeItem('userInfo');
+  };
   return (
     <BrowserRouter>
       <nav className="navi">
@@ -42,7 +49,13 @@ function App() {
           >
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-                TEST
+                {userInfo ? (
+                  userInfo.name
+                ) : (
+                  <Link to="/signin">
+                    <h2 data-bs-dismiss="offcanvas">Sign in</h2>
+                  </Link>
+                )}
               </h5>
               <button
                 type="button"
@@ -74,7 +87,30 @@ function App() {
               <h5>PRICING</h5>
             </li>
             <li>
-              <h5>CONTACT</h5>
+              <h5>
+                {userInfo ? (
+                  <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                    <LinkContainer to="/profile">
+                      <NavDropdown.Item>User Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/orderhistory">
+                      <NavDropdown.Item>Order History</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Divider />
+                    <Link
+                      className="dropdown-item"
+                      to="#signout"
+                      onClick={signoutHandler}
+                    >
+                      Sign Out
+                    </Link>
+                  </NavDropdown>
+                ) : (
+                  <Link className="lien" to="/signin">
+                    SIGN IN
+                  </Link>
+                )}
+              </h5>
             </li>
             <li>
               <button className="b1">TAKE ORDER</button>
@@ -94,7 +130,6 @@ function App() {
               </Link>
             </li>
           </ul>{' '}
-          *
         </div>
       </nav>
       <Routes>

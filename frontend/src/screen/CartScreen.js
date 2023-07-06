@@ -36,7 +36,7 @@ export default function CartScreen() {
         <title>Shopping Cart</title>
       </Helmet>
       <h1>Shopping Cart</h1>
-      <Row className="mt-5">
+      <Row className="mt-5" style={{ paddingTop: '5%' }}>
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
@@ -57,7 +57,7 @@ export default function CartScreen() {
                         {item.name}
                       </Link>
                     </Col>
-                    <Col md={3}>
+                    <Col sm={3}>
                       <Button
                         variant="light"
                         onClick={() =>
@@ -78,8 +78,8 @@ export default function CartScreen() {
                         <i class="fa-solid fa-circle-plus"></i>
                       </Button>
                     </Col>
-                    <Col md={3}>{item.price}$</Col>
-                    <Col md={2}>
+                    <Col sm={3}>{item.price}$</Col>
+                    <Col sm={2}>
                       <Button
                         variant="light"
                         onClick={() => removeItemHandler(item)}

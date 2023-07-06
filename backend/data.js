@@ -1,7 +1,22 @@
+import bcrypt from 'bcryptjs';
+
 const data = {
+  users: [
+    {
+      name: 'Mbacké',
+      email: 'mbacke@test.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: true,
+    },
+    {
+      name: 'Jonh',
+      email: 'jonh@test.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
-      _id: '1',
       name: 'Quarter Punder BLT',
       slug: 'quarter-punder-blt',
       price: 14.99,
@@ -12,7 +27,6 @@ const data = {
     },
 
     {
-      _id: '2',
       name: 'Crispy Hamburger',
       slug: 'crispy-hamburger',
       price: 9.99,
@@ -23,7 +37,6 @@ const data = {
     },
 
     {
-      _id: '3',
       name: 'Mega Cheesy',
       slug: 'mega-cheesy',
       price: 19.99,
@@ -34,7 +47,6 @@ const data = {
     },
 
     {
-      _id: '4',
       name: 'VeganS Special',
       slug: 'vagans-special',
       price: 14.99,

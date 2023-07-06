@@ -1,27 +1,41 @@
 import express from 'express';
 import data from './data.js';
 import path from 'path';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import seedRouter from './routes/seedRoutes.js';
+import producRouter from './routes/productRoute.js';
+import userRouter from './routes/userRoutes.js';
+import expressAsyncHandler from 'express-async-handler';
 
+dotenv.config();
+
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('connected to db');
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 const app = express();
 
-app.get('/api/burgers', (req, res) => {
-  res.send(data.products);
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/api/burgers/slug/:slug', (req, res) => {
-  const burger = data.products.find((x) => x.slug === req.params.slug);
-  if (burger) {
-    res.send(burger);
-  } else {
-    res.status(404).send({ message: 'Product not Found' });
-  }
-});
+app.use('/api/seed', seedRouter);
+app.use('/api/burgers', producRouter);
+app.use('/api/users', userRouter);
 
 const _dirname = path.resolve();
 app.use(express.static(path.join(_dirname, '/frontend/build')));
 app.get('*', (req, res) =>
   res.sendFile(path.join(_dirname, '/frontend/build/index.html'))
 );
+
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
 
 const port = process.env.PORT || 5000;
 
