@@ -9,6 +9,7 @@ import axios from 'axios';
 import OwlCarousel from 'react-owl-carousel';
 import logger from 'use-reducer-logger';
 import MessageBox from './components/MessageBox';
+
 const reducer = (state, action) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
@@ -50,51 +51,32 @@ const Slider = () => {
           <b>OUR MENU</b>
         </h1>
         <div className="slider pt-5">
-          <OwlCarousel
-            className="owl-carousel"
-            loop
-            nav
-            dots={false}
-            margin={10}
-            center
-            autoPlay
-            autoplayTimeout={6000}
-            autoplayHoverPause
-            navText={[
-              "<i class='fa fa-angle-left' style='background-color:white;'></i>",
-              "<i class='fa fa-angle-right' style='background-color:white;'></i>",
-            ]}
-            responsive={{
-              0: { items: 1 },
-              600: { items: 1 },
-              1000: { items: 3 },
-            }}
-          >
-            {loading ? (
-              <div className="slider-card">
-                <div className=".slider-card">
-                  <img
-                    className="loading"
-                    src={'./Images/hamb2-removebg-preview.png'}
-                    alt=""
-                  />
-                  <h2
-                    class="text-center card-title py-1"
-                    style={{ color: '#fffb0b' }}
-                  >
-                    Loading...
-                  </h2>
-                  <div class="info">
-                    <div class="card-body text-center py-2">
-                      <p class="text-center card-text"></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : error ? (
-              <MessageBox variant="danger">{error}</MessageBox>
-            ) : (
-              burgers.map((product) => (
+          {loading ? (
+            <div> loadingggg</div>
+          ) : error ? (
+            <MessageBox variant="danger">{error}</MessageBox>
+          ) : (
+            <OwlCarousel
+              className="owl-carousel"
+              loop
+              nav
+              dots={false}
+              margin={10}
+              center
+              autoPlay
+              autoplayTimeout={6000}
+              autoplayHoverPause
+              navText={[
+                "<i class='fa fa-angle-left' style='background-color:white;'></i>",
+                "<i class='fa fa-angle-right' style='background-color:white;'></i>",
+              ]}
+              responsive={{
+                0: { items: 1 },
+                600: { items: 1 },
+                1000: { items: 3 },
+              }}
+            >
+              {burgers.map((product) => (
                 <div key={product.slug} class="slider-card text-center pt-5">
                   <img src={product.image} alt="" />
                   <h2
@@ -120,9 +102,9 @@ const Slider = () => {
                     </Link>
                   </button>
                 </div>
-              ))
-            )}
-          </OwlCarousel>
+              ))}
+            </OwlCarousel>
+          )}
         </div>
       </Container>
     </section>

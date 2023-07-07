@@ -102,11 +102,14 @@ section {
 
 @media screen and (max-width: 768px) {
   .owl-item.active.center .slider-card {
-    transform: scale(0.5);
+    transform: scale(0.8);
+  }
+  .slider {
+    height: 600px;
   }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (min-width: 992px) {
   .owl-item.active.center .slider-card {
     transform: scale(1);
   }

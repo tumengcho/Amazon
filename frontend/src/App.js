@@ -13,6 +13,7 @@ import { useContext } from 'react';
 import { Store } from './Store';
 import CartScreen from './screen/CartScreen';
 import SignInScreen from './screen/SignInScreen';
+import ShippingScreen from './screen/ShippingScreen';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -138,6 +139,7 @@ function App() {
       <Routes>
         <Route path="/cart" element={<CartScreen />} />
         <Route path="/signin" element={<SignInScreen />} />
+        <Route path="/shipping" element={<ShippingScreen />} />
         <Route path="/" element={<HomeScreen />} />
         <Route path="/burgers/:slug" element={<ProductScreen />} />
       </Routes>
