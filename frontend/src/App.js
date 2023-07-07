@@ -1,4 +1,6 @@
 import './css/style.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './css/styles.css';
 import Badge from 'react-bootstrap/Badge';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -21,6 +23,7 @@ function App() {
   };
   return (
     <BrowserRouter>
+      <ToastContainer position="bottom-center" limit={1} />
       <nav className="navi">
         <Link className="Moxom" to="/">
           <span className="lbraquet"></span>

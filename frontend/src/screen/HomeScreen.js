@@ -2,44 +2,12 @@ import Slider from '../Slider';
 import { Helmet } from 'react-helmet-async';
 function HomeScreen() {
   return (
-    <div className="main">
+    <div>
       <Helmet>
         <title>Moxom</title>
       </Helmet>
-      <div className="RecVert"></div>
-      <div className="RecRouge1"></div>
-      <div className="RecRouge2"></div>
-      <div className="crispy">
-        <div className="lettre">
-          <div className="surplus1"></div>
-          <h1>C</h1>
-        </div>
-        <div className="lettre">
-          <h1>R</h1>
-        </div>
-        <div className="lettre">
-          <h1 className="I">I</h1>
-        </div>
-        <div className="lettre">
-          <h1>S</h1>
-        </div>
-        <div className="lettre">
-          <h1>P</h1>
-        </div>
-        <div className="lettre">
-          <h1>Y</h1>
-          <div className="surplus2"></div>
-        </div>
-      </div>
-      <div className="Hamburger">
-        <h1>HAMBURGER</h1>
-      </div>
-      <div className="Image">
-        <img
-          src={require('../Images/hamburger-removebg-preview.png')}
-          style={{ width: '100%', height: '100%' }}
-          alt=""
-        />
+      <div className="main">
+        <img src={require('../Images/CRISPY.png')} alt="lll" />
       </div>
       <div
         class="Rec2 row container-fluid"
@@ -161,7 +129,6 @@ function HomeScreen() {
           </div>
         </div>
       </div>{' '}
-      */
     </div>
   );
 }

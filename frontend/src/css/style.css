@@ -114,10 +114,12 @@ li {
 .main {
   width: 100%;
   position: relative;
-  height: 900px;
-  background-color: #fffb0b;
-  padding-top: 80px;
-  padding-bottom: 100px;
+  height: 100%;
+  margin-top: 80px;
+}
+
+.main img {
+  width: 100%;
 }
 
 /* Le rectangle vert du body */
@@ -348,8 +350,8 @@ li {
 
 .produit {
   width: 100%;
-  height: 900px;
-  background-image: url('../Images/fondProduit.jpg');
+  height: 100%;
+  background-image: url('../Images/fond1.jpg');
   background-position: center;
 }
 
@@ -363,7 +365,7 @@ li {
 }
 .imgProd {
   max-width: 99%;
-  height: 100%;
+  max-height: 100%;
   align-self: right;
 }
 
@@ -463,6 +465,18 @@ li {
     text-align: center;
   }
 
+  .main {
+    background-image: url('../Images/mobCrispy.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1000px;
+  }
+
+  .main img {
+    display: none;
+  }
+
   .Numéro h1 {
     margin-top: 35%;
   }
@@ -475,7 +489,7 @@ li {
   }
 
   .Rec2 h2 {
-    font-size: 1.2em;
+    font-size: 0.8em;
   }
   .Image {
     left: 22%;
@@ -505,6 +519,7 @@ li {
 
   .main {
     height: 600px;
+    width: 100%;
   }
 
   .RecRouge2 {
@@ -543,6 +558,8 @@ li {
 }
 
 @media screen and (min-width: 576px) {
+  .main {
+  }
   .sDelivery {
     font-size: 7dvw;
   }

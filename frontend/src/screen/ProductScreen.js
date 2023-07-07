@@ -69,12 +69,15 @@ function ProductScreen() {
     <div class="produit text-start">
       <div class="intProduit container">
         <div class="row rangé">
-          <div class="col-6">
+          <div class="col-md-6 align-self-center">
             <img class="imgProd" src={burger.image} alt="" />
           </div>
           <div
-            class="col-6"
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.200)' }}
+            class="col-md-6"
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.200)',
+              maxHeight: '100%',
+            }}
           >
             <div class="col">
               <Helmet>
@@ -118,14 +121,14 @@ function ProductScreen() {
                 <div class="tabs__content">CONTENT for Tab #2</div>
               </div>
             </div>
-            <div class="col pb-4">
+            <div class="col">
               <select
-                class="form-select text-center rounded-pill col-6 mx-5 mt-5"
+                class="form-select text-center rounded-pill col-6 mx-md-5 mx-xs-2"
                 aria-label="Default select example"
                 style={{
                   width: '30%',
                   display: 'inline-block',
-                  height: '75px',
+                  height: '70%',
                 }}
               >
                 <option selected>Quantity</option>
@@ -134,8 +137,8 @@ function ProductScreen() {
                 <option value="3">3</option>
               </select>
               <button
-                class="col-6 rounded-pill mx-5 mt-5 product-buy"
-                style={{ width: '30%', height: '75px' }}
+                class="col-6 rounded-pill mx-2 product-buy"
+                style={{ width: '30%', height: '70%' }}
                 onClick={addToCartHandler}
               >
                 ORDER ONLINE
