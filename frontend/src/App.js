@@ -14,6 +14,7 @@ import { Store } from './Store';
 import CartScreen from './screen/CartScreen';
 import SignInScreen from './screen/SignInScreen';
 import ShippingScreen from './screen/ShippingScreen';
+import SignUpScreen from './screen/SignUpScreen';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -21,6 +22,7 @@ function App() {
   const signoutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
   };
   return (
     <BrowserRouter>
@@ -54,10 +56,25 @@ function App() {
             <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasExampleLabel">
                 {userInfo ? (
-                  userInfo.name
+                  <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                    <LinkContainer to="/profile">
+                      <NavDropdown.Item>User Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/orderhistory">
+                      <NavDropdown.Item>Order History</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Divider />
+                    <Link
+                      className="dropdown-item"
+                      to="#signout"
+                      onClick={signoutHandler}
+                    >
+                      Sign Out
+                    </Link>
+                  </NavDropdown>
                 ) : (
-                  <Link to="/signin">
-                    <h2 data-bs-dismiss="offcanvas">Sign in</h2>
+                  <Link className="lien" to="/signin">
+                    SIGN IN
                   </Link>
                 )}
               </h5>
@@ -70,8 +87,7 @@ function App() {
             </div>
             <div class="offcanvas-body">
               <div>
-                Some text as placeholder. In real life you can have the elements
-                you have chosen. Like, text, images, lists, etc.
+                <h5></h5>
               </div>
             </div>
           </div>
@@ -139,6 +155,7 @@ function App() {
       <Routes>
         <Route path="/cart" element={<CartScreen />} />
         <Route path="/signin" element={<SignInScreen />} />
+        <Route path="/signup" element={<SignUpScreen />} />
         <Route path="/shipping" element={<ShippingScreen />} />
         <Route path="/" element={<HomeScreen />} />
         <Route path="/burgers/:slug" element={<ProductScreen />} />
