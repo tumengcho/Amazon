@@ -15,6 +15,8 @@ import CartScreen from './screen/CartScreen';
 import SignInScreen from './screen/SignInScreen';
 import ShippingScreen from './screen/ShippingScreen';
 import SignUpScreen from './screen/SignUpScreen';
+import PaymentMethodScreen from './screen/PaymentMethodScreen';
+import PlaceOrderScreen from './screen/PlaceOrderScreen';
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
@@ -23,6 +25,7 @@ function App() {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   };
   return (
     <BrowserRouter>
@@ -74,7 +77,7 @@ function App() {
                   </NavDropdown>
                 ) : (
                   <Link className="lien" to="/signin">
-                    SIGN IN
+                    <h5 data-bs-dismiss="offcanvas">SIGN IN</h5>
                   </Link>
                 )}
               </h5>
@@ -157,6 +160,8 @@ function App() {
         <Route path="/signin" element={<SignInScreen />} />
         <Route path="/signup" element={<SignUpScreen />} />
         <Route path="/shipping" element={<ShippingScreen />} />
+        <Route path="/payment" element={<PaymentMethodScreen />} />
+        <Route path="/placeorder" element={<PlaceOrderScreen />} />
         <Route path="/" element={<HomeScreen />} />
         <Route path="/burgers/:slug" element={<ProductScreen />} />
       </Routes>
