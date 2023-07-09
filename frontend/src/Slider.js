@@ -92,7 +92,11 @@ const Slider = () => {
                   </div>
                   <h1
                     class="text-center pb-3"
-                    style={{ color: '#ce2a2a', fontFamily: 'fantasy' }}
+                    style={{
+                      color: '#ce2a2a',
+                      fontFamily:
+                        "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif",
+                    }}
                   >
                     {product.price}$
                   </h1>

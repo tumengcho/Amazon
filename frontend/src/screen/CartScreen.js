@@ -35,9 +35,9 @@ export default function CartScreen() {
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
-      <h1>Shopping Cart</h1>
-      <Row className="mt-5" style={{ paddingTop: '5%' }}>
-        <Col md={8}>
+      <h1 className="text-center py-5 text-uppercase">Shopping Cart</h1>
+      <Row style={{ paddingTop: '5%' }}>
+        <Col md={8} className="mb-4">
           {cartItems.length === 0 ? (
             <MessageBox>
               Cart is empty <Link to="/">Go Shopping</Link>
@@ -45,7 +45,7 @@ export default function CartScreen() {
           ) : (
             <ListGroup>
               {cartItems.map((item) => (
-                <ListGroup.Item key={item._id}>
+                <ListGroup.Item className="py-5 my-1" key={item._id}>
                   <Row className="align-items-center">
                     <Col className="text-center" md={4}>
                       <img
@@ -109,7 +109,10 @@ export default function CartScreen() {
                       Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}
                       {'  '}
                       items) : <br></br>
-                      {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}$
+                      {cartItems
+                        .reduce((a, c) => a + c.price * c.quantity, 0)
+                        .toFixed(2)}
+                      $
                     </h3>
                   </ListGroup.Item>
                   <ListGroup.Item>

@@ -6,6 +6,12 @@ import { Helmet } from 'react-helmet-async';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
 import { Store } from '../Store';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/esm/Container';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/esm/Button';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -66,7 +72,85 @@ function ProductScreen() {
       </div>
     </div>
   ) : (
-    <div class="produit text-start">
+    <Container className="pt-md-5">
+      <Row className="align-items-center text-md-start text-center pt-5">
+        <Col md={6}>
+          <Card.Img
+            variant="top"
+            src={burger.image}
+            className="img-fluid rounded img-thumbnail"
+          />
+        </Col>
+        <Col md={6}>
+          <ListGroup variant="flush">
+            <ListGroup.Item className="py-3">
+              <Card.Title>
+                <h1 className="product-title">{burger.name}</h1>{' '}
+              </Card.Title>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <h3 className="product-price">{burger.price} $</h3>
+            </ListGroup.Item>
+            <ListGroup.Item className="py-3">
+              <div>
+                <div class="tabs">
+                  <input
+                    type="radio"
+                    class="tabs__radio"
+                    name="tabs-example"
+                    id="tab1"
+                    checked
+                  />
+                  <label for="tab1" class="tabs__label">
+                    <span style={{ fontSize: '1.1em' }}>DESCRIPTION</span>
+                  </label>
+                  <div class="tabs__content">{burger.description}</div>
+                  <input
+                    type="radio"
+                    class="tabs__radio"
+                    name="tabs-example"
+                    id="tab2"
+                  />
+                  <label for="tab2" class="tabs__label">
+                    <span style={{ fontSize: '1.1em' }}>DELIVERY</span>
+                  </label>
+                  <div class="tabs__content">CONTENT for Tab #2</div>
+                </div>
+              </div>
+            </ListGroup.Item>
+            <ListGroup.Item className="py-4">
+              <Row className="align-items-center text-center ">
+                <Col>
+                  <select
+                    class="form-select text-center rounded-pill"
+                    aria-label="Default select example"
+                    style={{
+                      width: '80%',
+                      display: 'inline-block',
+                    }}
+                  >
+                    <option selected>Quantity</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </Col>
+                <Col>
+                  <Button
+                    className="rounded-pill"
+                    onClick={addToCartHandler}
+                    style={{ width: '80%', backgroundColor: ' #adeb13' }}
+                  >
+                    Order Online
+                  </Button>
+                </Col>
+              </Row>
+            </ListGroup.Item>
+          </ListGroup>
+        </Col>
+      </Row>
+    </Container>
+    /*  <div class="produit text-start">
       <div class="intProduit container">
         <div class="row rangé">
           <div class="col-md-6 align-self-center">
@@ -137,9 +221,7 @@ function ProductScreen() {
                 <option value="3">3</option>
               </select>
               <button
-                class="col-6 rounded-pill mx-2 product-buy"
-                style={{ width: '30%', height: '70%' }}
-                onClick={addToCartHandler}
+                
               >
                 ORDER ONLINE
               </button>
@@ -147,7 +229,7 @@ function ProductScreen() {
           </div>
         </div>
       </div>
-    </div>
+    </div> */
   );
 }
 

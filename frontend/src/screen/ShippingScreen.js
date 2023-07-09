@@ -62,7 +62,7 @@ export default function ShippingScreen() {
         <CheckoutSteps step1 step2></CheckoutSteps>
       </div>
       <div className="container" style={{ maxWidth: '600px' }}>
-        <h1 className="my-3">Shipping Address</h1>
+        <h1 className="py-5">Shipping Address</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="fullName">
             <Form.Label>Full Name</Form.Label>
@@ -104,8 +104,8 @@ export default function ShippingScreen() {
               required
             />
           </Form.Group>
-          <div className="mb-3">
-            <Button variant="primary" type="submit">
+          <div className="mt-3">
+            <Button className="w-100 mt-4" variant="primary" type="submit">
               Continue
             </Button>
           </div>

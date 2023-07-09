@@ -35,3 +35,8 @@ code {
   border-bottom: 0.2rem solid red;
   color: red;
 }
+
+.product-buy {
+  background-color: #adeb13;
+  color: white;
+}

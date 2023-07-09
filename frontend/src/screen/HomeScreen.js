@@ -1,5 +1,9 @@
+import Container from 'react-bootstrap/esm/Container';
 import Slider from '../Slider';
 import { Helmet } from 'react-helmet-async';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 function HomeScreen() {
   return (
     <div>
@@ -40,7 +44,27 @@ function HomeScreen() {
             paddingTop: '7%',
           }}
         >
-          <div class="container intDeliv text-center align-items-center">
+          <Container className="intDeliv text-center align-items-center pt-5">
+            <Row>
+              <Col>
+                <ListGroup>
+                  <ListGroup.Item>
+                    <div style={{ height: '25%', marginBottom: '5%' }}>
+                      <h1 class="sDelivery">SANDWITCH DAY</h1>
+                    </div>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <div>
+                      <button class=" btn btn-success rounded-pill w-100">
+                        <h3 className="bText">ORDER NOW</h3>
+                      </button>
+                    </div>
+                  </ListGroup.Item>
+                </ListGroup>
+              </Col>
+            </Row>
+          </Container>
+          {/* <div class="container ">
             <div
               style={{ height: '40%', paddingLeft: '13%' }}
               class="row"
@@ -56,7 +80,7 @@ function HomeScreen() {
                 <h3 className="bText">ORDER NOW</h3>
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div class=" avantages row text-center align-items-center">
