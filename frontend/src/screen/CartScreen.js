@@ -57,29 +57,35 @@ export default function CartScreen() {
                         {item.name}
                       </Link>
                     </Col>
-                    <Col sm={3}>
-                      <Button
-                        variant="light"
-                        onClick={() =>
-                          updateCartHandler(item, item.quantity - 1)
-                        }
-                        disabled={item.quantity === 1}
-                      >
-                        <i class="fa-solid fa-circle-minus"></i>
-                      </Button>
-                      <span>{item.quantity}</span>
-                      <Button
-                        variant="light"
-                        onClick={() =>
-                          updateCartHandler(item, item.quantity + 1)
-                        }
-                        disabled={item.quantity === 10}
-                      >
-                        <i class="fa-solid fa-circle-plus"></i>
-                      </Button>
+                    <Col xs={3}>
+                      <div className="row align-items-center">
+                        <Button
+                          className="col-4"
+                          variant="light"
+                          onClick={() =>
+                            updateCartHandler(item, item.quantity - 1)
+                          }
+                          disabled={item.quantity === 1}
+                        >
+                          <i class="fa-solid fa-circle-minus"></i>
+                        </Button>
+                        <span className="col-4">{item.quantity}</span>
+                        <Button
+                          className="col-4"
+                          variant="light"
+                          onClick={() =>
+                            updateCartHandler(item, item.quantity + 1)
+                          }
+                          disabled={item.quantity === 10}
+                        >
+                          <i class="fa-solid fa-circle-plus"></i>
+                        </Button>
+                      </div>
                     </Col>
-                    <Col sm={3}>{item.price}$</Col>
-                    <Col sm={2}>
+                    <Col md={3} xs={6} className="text-center">
+                      {item.price}$
+                    </Col>
+                    <Col xs={2}>
                       <Button
                         variant="light"
                         onClick={() => removeItemHandler(item)}

@@ -7,6 +7,7 @@ import seedRouter from './routes/seedRoutes.js';
 import producRouter from './routes/productRoute.js';
 import userRouter from './routes/userRoutes.js';
 import expressAsyncHandler from 'express-async-handler';
+import orderRouter from './routes/orderRoutes.js';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/seed', seedRouter);
 app.use('/api/burgers', producRouter);
 app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter);
 
 const _dirname = path.resolve();
 app.use(express.static(path.join(_dirname, '/frontend/build')));
